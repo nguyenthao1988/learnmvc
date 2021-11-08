@@ -1,10 +1,103 @@
 ﻿@{
     ViewData["Title"] = "Home Page";   
+
+    // Url.Action()
+    // Url.ActionLink()
+
+    //Url.RouteUrl()
+    //Url.Link()
+
+    // <a> <form> <button>
 }
 
 
 <partial name="_AlertMessage" />
 <div class="text-center">
-    <h1 class="display-4">Love Meo</h1>
+    <h1 class="display-4">Xin chào</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<ul>
+    <li>asp-area="Area"</li>
+    <li>asp-action="Action"</li>
+    <li>asp-controller="Product"</li>
+    <li>asp-route...="123"</li>
+    <li>asp-route="default"</li>
+</ul>
+
+<a asp-action="ViewProduct" asp-controller="First" >
+    VI du 1 your
+</a>
+
+<a asp-action="PlanetInfo" asp-controller="Planet" asp-route-id="123" >
+    VI du 2 your
+</a>
+@{
+    var routedata = new Dictionary<string, string>()
+        {
+            {"name", "nguyenthao"},
+            {"abc", "xyz"},
+            {"id", "1113"}
+        };
+}
+
+<a asp-action="Index" asp-controller="Home" asp-all-route-data="@routedata"
+   
+ >
+    VI du 122 your
+</a>
+
+<a asp-action="Index" asp-controller="Product" asp-area="ProductManage"
+ asp-all-route-data='new Dictionary<string, string>()
+        {
+            {"name", "nguyenthao"},
+            {"abc", "xyz"},
+            {"id", "1113"}
+        };'
+   
+ >
+    Thảo meo
+</a>
+
+<a asp-action="Index" asp-controller="Home"
+    asp-route-id="123"
+    asp-route-name="fsdfdsf"
+    asp-route-abc = "XYX"
+ >
+    VI du 2 your
+</a>
+
+<p>
+    @Url.ActionLink()
+</p>
+
+<p>
+    @Url.Action()
+</p>
+
+<p>
+    @Url.Action("Privavy")
+</p>
+
+<p>
+    @Url.Action("Privavy", new {id= 123, name = "XuanThuLab"})
+</p>
+
+<p>
+    @Url.Action("Jupiter", "Planet")
+</p>
+<p>
+    @Url.Action("PlanetInfo", "Planet", new {id = 10})
+</p>
+
+<p>
+    @Url.Action("Index", "Product", new {area="ProductManage", id=123})
+</p>
+
+<p>
+    @Url.RouteUrl("default", new {action = "HelloView", controller="Home", id=123, name="xuanthulab"})
+</p>
+
+<p>
+    @Url.RouteUrl("venus1")
+</p>
